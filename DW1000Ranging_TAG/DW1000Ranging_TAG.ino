@@ -6,7 +6,7 @@ const uint8_t PIN_MOSI = 23;
 const uint8_t PIN_MISO = 19;
 const uint8_t PIN_SS = 2;
 const uint8_t PIN_RST = 15;
-const uint8_t PIN_IRQ = 17;//Test
+const uint8_t PIN_IRQ = 17;
 
 void setup() {
   Serial.begin(115200);
