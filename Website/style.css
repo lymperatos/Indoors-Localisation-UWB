@@ -1,3 +1,65 @@
 body{
-  
+  padding: 0px;
+  margin: 0px;
+}
+nav{
+  display: inline-block;
+  width: 100%;
+}
+nav ul{
+  float: right;
+  margin-top: 40px;
+  margin-right: 100px;
+
+}
+nav ul li{
+  float: left;
+  margin-left: 50px;
+  display: inline-block;
+  padding: 0px;
+  font-size: 26px;
+
+}
+nav ul li a{
+      text-decoration: none;
+      color: black;
+      font-family: Avenir Next;
+}
+nav img{
+  float: left;
+  width: 200px;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+.sign-up{
+  color: #5D97FF;
+}
+
+.Hero{
+  margin-left: 100px;
+  margin-top: 100px;
+}
+.left{
+  display: inline-block;
+  width: 50%;
+}
+
+h1{
+  font-family: Avenir Next;
+  font-weight: 500;
+}
+
+.u1{
+  text-decoration-color: #FFBC7A;
+  text-decoration-style: solid;
+}
+.u2{
+  text-decoration-color: #E5EEFF;
+  text-decoration-style: solid;
+}
+
+.left img{
+  width: 90%;
+
 }
