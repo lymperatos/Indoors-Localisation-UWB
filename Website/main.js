@@ -17,11 +17,11 @@ const auth = firebase.auth();
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 
-    window.location.replace("https://lymperatos.com/locate");
+    window.location = "https://lymperatos.com/Website/locate.html";//TODO: FIX THIS
 
   } else {
 
-    //window.location.replace("https://lymperatos.com");
+      window.location = "https://lymperatos.com";
 
   }
 });
