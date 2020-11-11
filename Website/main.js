@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   } else {
 
-    window.location.replace("https://lymperatos.com");
+    //window.location.replace("https://lymperatos.com");
 
   }
 });
