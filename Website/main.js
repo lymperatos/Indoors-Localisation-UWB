@@ -17,7 +17,7 @@ const auth = firebase.auth();
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 
-    window.location.replace("https://lymperatos.com/Website/locate.html");
+    window.location.replace("https://lymperatos.com/locate");
 
   } else {
 
