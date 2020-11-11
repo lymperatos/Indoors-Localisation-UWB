@@ -20,9 +20,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     window.location = "https://lymperatos.com/Website/locate.html";//TODO: FIX THIS
 
   } else {
-    if(window.location != "index.html"){
-      window.location = "https://lymperatos.com";
-    }
+    // if(window.location != "index.html"){
+    //   window.location = "https://lymperatos.com";
+    // }
 
 
   }
