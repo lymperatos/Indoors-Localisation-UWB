@@ -17,14 +17,18 @@ const auth = firebase.auth();
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 
-    window.location = "https://lymperatos.com/Website/locate.html";//TODO: FIX THIS
-
+    document.getElementById("Hero").style.display = "none";
+    document.getElementById("sbtn").innerHTML = "Locate";
+    document.getElementById("user").style.display = "block";
+    document.getElementById("user").innerHTML = user.email;
+    document.getElementById("bar").style.display = "block";
   } else {
     // if(window.location != "index.html"){
     //   window.location = "https://lymperatos.com";
     // }
-
-
+    document.getElementById("Hero").style.display = "block";
+    document.getElementById("sbtn").innerHTML = "Sign Up";
+    document.getElementById("bar").style.display = "none";
   }
 });
 
@@ -38,8 +42,13 @@ function login(){
     var errorCode = error.code;
     var errorMessage = error.message;
 
-    alert("Error" + errorMessage);
+        document.getElementById("error").innerHTML = errorMessage;
   });
 
+
+}
+
+function logout(){
+  firebase.auth().signOut()
 
 }

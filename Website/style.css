@@ -1,6 +1,11 @@
+
+*{
+  font-family: Avenir Next;
+}
 body{
   padding: 0px;
   margin: 0px;
+
 }
 nav{
   display: inline-block;
@@ -24,6 +29,14 @@ nav ul li a{
       text-decoration: none;
       color: black;
       font-family: Avenir Next;
+      background-image: linear-gradient(120deg, #FFBC7A 0%, #FFBC7A 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 0.0em;
+      background-position: 0 80%;
+      transition: 0.1s ease-in-out 0.01s;
+}
+nav ul li a:hover{
+  background-size: 100% 0.4em;
 }
 nav img{
   float: left;
@@ -32,8 +45,46 @@ nav img{
   margin-top: 20px;
 }
 
+.user{
+  margin-top: 0px;
+  font-family: Avenir Next;
+  color: white;
+  float: right;
+  padding-top: 10px;
+  margin-right: 20px;
+
+
+
+}
+.logout{
+  margin-top: 0px;
+  font-family: Avenir Next;
+  color: black;
+  float: right;
+  padding-top: 10px;
+  margin-right: 100px;
+  text-decoration: none;
+
+}
+.bar{
+  top: 0px;
+  height: 40px;
+  background-color: #5D97FF;
+  width: 100%;
+
+
+}
+.bar img{
+  width: 15px;
+  margin-top: 12px;
+  margin-right: 10px;
+  float: right;
+
+}
+
+
 .sign-up{
-  color: #5D97FF;
+
 }
 
 .Hero{
@@ -50,17 +101,23 @@ nav img{
 }
 
 h1{
-  font-family: Avenir Next;
+
   font-weight: 500;
 }
 
 .u1{
-  text-decoration-color: #FFBC7A;
-  text-decoration-style: solid;
+
+  background-image: linear-gradient(120deg, #FFBC7A 0%, #FFBC7A 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.4em;
+  background-position: 0 75%;
+
 }
 .u2{
-  text-decoration-color: #E5EEFF;
-  text-decoration-style: solid;
+  background-image: linear-gradient(120deg, #E5EEFF 0%, #E5EEFF 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.4em;
+  background-position: 0 75%;
 }
 
 .left img{
@@ -88,14 +145,77 @@ h1{
   width: 80%;
   height: 400px;
   margin-top: 30px;
-
+  border-radius: 5px;
 
 }
 
 .login-form h1 {
   font-weight: 550;
+  margin-bottom: 40px;
+}
+
+input {
+  border-color: black;
+  width: 70%;
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 17px;
 }
 
 button{
-  width: 100px;
+
+width: 70%;
+color: white;
+padding: 10px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+background: #5D97FF;
+box-shadow: 0 3px 15px 0 #8CB3F9;
+border-radius: 3px;
+font-size: 17px;
+font-weight: 500;
+
+
+}
+
+button:hover{
+background: #FFFFFF;
+color: #5D97FF;
+border: solid;
+border-width: 2px;
+box-shadow: none;
+
+}
+
+.error{
+  color: red;
+  font-size: 15px;
+}
+
+footer{
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+
+}
+
+.foorer-main{
+  display: inline;
+
+
+}
+
+.footer-main img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+
+
 }

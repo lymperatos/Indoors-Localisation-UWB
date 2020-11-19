@@ -3,31 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>Localisation</title>
-    <link rel="stylesheet" href="https://lymperatos.com/Website/style.css">
+    <link rel="stylesheet" href="style.css">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
-<script src="https://lymperatos.com/Website/main.js"></script>
+<script src="main.js"></script>
 
 
   </head>
   <body>
     <header>
       <!-- Navigation -->
+      <div class="bar" id="bar">
+        <a class="logout" href="javascript:logout()">Logout</a>
+        <p class="user" id="user">-</p>
+        <img src="https://lymperatos.com/Website/Assets/usr.svg" alt="user">
+      </div>
+
         <nav>
+
           <img src="https://lymperatos.com/Website/Assets/Logo.svg" alt="logo">
           <ul>
+
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#" class="sign-up">Sign up</a></li>
+            <li><a href="#" class="sign-up" id="sbtn" >Sign up</a></li>
+
           </ul>
+
         </nav>
 
       <!-- Hero -->
-        <div class="Hero">
+        <div class="Hero" id="Hero">
 
           <div class="left">
-            <h1>Locate anything indoors with <u class="u1">10cm</u> accuracy using <u class="u2">Ultra-Wideband</u>.</h1>
+            <h1>Locate anything indoors with <span class="u1">10cm</span> accuracy using <span class="u2">Ultra-Wideband</span>.</h1>
             <img src="https://lymperatos.com/Website/Assets/Image.svg" alt="image">
           </div>
 
@@ -35,8 +45,9 @@
           <div class="login-form">
 
               <h1>User Login</h1>
-              <input type="text" name="" value="" id="email">
-              <input type="text" name="" value="" id="password">
+              <p class="error" id="error"></p>
+              <input type="text" name="" value="" id="email" placeholder="Email">
+              <input type="password" name="" value="" id="password" placeholder="Password">
               <button type="button" name="login-btn" onclick="login()">Login</button>
           </div>
         </div>
@@ -44,6 +55,22 @@
 
 
     </header>
+
+    <footer>
+
+
+            <div class="footer-main">
+              <a href="https://github.com/lymperatos/Indoors-Localisation-UWB">
+              <img src="https://lymperatos.com/Website/Assets/gh-logo.svg" alt="" style="margin-bottom: 15px; width: 40px;">
+
+              <img src="https://lymperatos.com/Website/Assets/GitHub_Logo.svg" alt="" style="width:100px;">
+              </a>
+              <p>Copyright © 2020</p>
+              <a href="#">Dimitris Lymperatos</a>
+            </div>
+
+
+    </footer>
 
   </body>
 </html>
