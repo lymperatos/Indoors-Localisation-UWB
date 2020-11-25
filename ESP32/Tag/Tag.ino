@@ -1,12 +1,32 @@
 #include <SPI.h>
 #include "DW1000Ranging.h"
+#include <WiFi.h>
+#include "FirebaseESP32.h"
 
+/* Pins connecting DWM1000 */
 const uint8_t PIN_SCK = 18;
 const uint8_t PIN_MOSI = 23;
 const uint8_t PIN_MISO = 19;
 const uint8_t PIN_SS = 2;
 const uint8_t PIN_RST = 15;
-const uint8_t PIN_IRQ = 17; //Test
+const uint8_t PIN_IRQ = 17; 
+
+/* Wifi setup */
+#define WIFI_SSID "";
+#define WIFI_PASSWORD "";
+
+
+/* Firebase Setup */
+
+//#define databaseURL "https://****.com";
+//#define secret "****";
+
+FirebaseData firebaseData;
+Firebase.begin(databaseURL, secret);
+Firebase.reconnectWifi(true);
+Firebase.setMaxRetry(firebaseData,3);
+String folder = "";
+
 
 void setup() {
   Serial.begin(115200);
