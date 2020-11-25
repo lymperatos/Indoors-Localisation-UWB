@@ -48,6 +48,27 @@ function login(){
 
 }
 
+function signUp(){
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((user) => {
+        document.getElementById("error").innerHTML = "Welcome! " + email;
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+    });
+
+
+  var errorCode = error.code;
+  var errorMessage = error.message;
+
+      document.getElementById("error").innerHTML = errorMessage;
+}
+
 function logout(){
   firebase.auth().signOut()
 

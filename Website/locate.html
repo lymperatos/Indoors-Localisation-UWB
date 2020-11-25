@@ -5,6 +5,14 @@
     <title>Locate</title>
   </head>
   <body>
-    Hello, you are logged in!
+    <input id="deviceID" value="">
+      Hello, you are logged in!
   </body>
+
+  <script type="text/javascript">
+  var url_string = window.location.href; //window.location.href
+  var url = new URL(url_string);
+  var c = url.searchParams.get("deviceID");
+  document.getElementById("deviceID").value = c;
+  </script>
 </html>
