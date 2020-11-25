@@ -16,26 +16,65 @@ const uint8_t PIN_IRQ = 17;
 //#define WIFI_SSID "****";
 //#define WIFI_PASSWORD "****";
 
-
-
 /* Firebase Setup */
-
 //#define databaseURL "https://****.com";
 //#define secret "****";
-
-
 FirebaseData firebaseData;
-
-
 String folder = "/Tag";
 
+TaskHandle_t Task1;
+float prev = 0.0;
 
 void setup() {
   Serial.begin(115200);
   delay(1000);
+ 
+  startDWM1000();   /* DW1000 Connection */
+  startWifi();      /* Wifi connection */
+  startFirebase();  /* Firebase connection */ 
 
-  /* DW1000 Connection */
-  DW1000Ranging.initCommunication(PIN_RST, PIN_SS, PIN_IRQ); //Reset, CS, IRQ pin
+
+  xTaskCreatePinnedToCore(
+                    Task1code,   /* Task function. */
+                    "Task1",     /* name of task. */
+                    10000,       /* Stack size of task */
+                    NULL,        /* parameter of the task */
+                    1,           /* priority of the task */
+                    &Task1,      /* Task handle to keep track of created task */
+                    0);          /* pin task to core 0 */                  
+  delay(500); 
+
+}
+ 
+/* Core 0 loop */
+void Task1code( void * pvParameters ){
+    for(;;){
+      loop0();
+    } 
+}
+
+/* Core 0 loop*/
+void loop0(){
+  Firebase.setFloat(firebaseData, folder+"/A1", prev);
+    delay(1000);
+}
+/* Core 1 loop*/
+void loop() {
+  DW1000Ranging.loop();
+}
+
+
+void startWifi(){
+   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  while(WiFi.status() != WL_CONNECTED){
+    Serial.print(".");
+    delay(300);
+  }
+  Serial.println("");
+}
+
+void startDWM1000{
+    DW1000Ranging.initCommunication(PIN_RST, PIN_SS, PIN_IRQ); //Reset, CS, IRQ pin
   DW1000Ranging.attachNewRange(newRange);
   DW1000Ranging.attachNewDevice(newDevice);
   DW1000Ranging.attachInactiveDevice(inactiveDevice);
@@ -50,25 +89,12 @@ void setup() {
 
 
   DW1000Ranging.startAsTag("7D:00:22:EA:82:60:3B:9C", DW1000.MODE_LONGDATA_RANGE_ACCURACY);
+}
 
-  /* Wifi connection */
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  while(WiFi.status() != WL_CONNECTED){
-    Serial.print(".");
-    delay(300);
-  }
-  Serial.println("");
-
-  /* Firebase connection */
+void startFirebase(){
   Firebase.begin(databaseURL, secret);
- 
 }
 
-void loop() {
-  DW1000Ranging.loop();
-}
-
-float prev = 0.0;
 void newRange() {
  // Serial.print("from: "); Serial.print(DW1000Ranging.getDistantDevice()->getShortAddress(), HEX);
   Serial.print("\t Range: ");
@@ -77,7 +103,7 @@ void newRange() {
   
   if(DW1000Ranging.getDistantDevice()->getRange() != prev){
     prev = DW1000Ranging.getDistantDevice()->getRange();
-    Firebase.setFloat(firebaseData,folder + "/A1", DW1000Ranging.getDistantDevice()->getRange());
+    
   }
   
 }
