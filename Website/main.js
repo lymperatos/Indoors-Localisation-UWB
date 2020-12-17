@@ -35,6 +35,7 @@ var  userId;
 firebase.auth().onAuthStateChanged(function(user) {
 
   if (user) {
+
     userId = user.uid;
     console.log("ID: "+userId);
     document.getElementById("Hero").style.display = "none";
