@@ -1,16 +1,4 @@
 
-//Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyAh7HynbvM9trAsJvMDBSx9Ghnyj3-ig9s",
-  authDomain: "localisation-7bdfa.firebaseapp.com",
-  databaseURL: "https://localisation-7bdfa.firebaseio.com",
-  projectId: "localisation-7bdfa",
-  storageBucket: "localisation-7bdfa.appspot.com",
-  messagingSenderId: "303751994749",
-  appId: "1:303751994749:web:676f4b1f5233b913198014"
-};
-
-
 var zoom = 80;
 let ainfoArray = [];
 var addingAnchor = false;
@@ -152,7 +140,7 @@ function draw() {
     drawAnchor(anchor[1], anchor[2], anchor[0]);
 
   });
-  drawTag(tagx, tagy);
+  drawTag(tagx, tagx);
   // tagx =mouseX/zoom;
   // tagy = mouseY/zoom;
 
