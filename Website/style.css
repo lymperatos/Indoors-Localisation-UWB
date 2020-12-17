@@ -1,6 +1,6 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap');
 *{
-  font-family: Avenir Next;
+  font-family: 'Nunito', sans-serif;
 }
 body{
   padding: 0px;
@@ -28,7 +28,7 @@ nav ul li{
 nav ul li a{
       text-decoration: none;
       color: black;
-      font-family: Avenir Next;
+
       background-image: linear-gradient(120deg, #FFBC7A 0%, #FFBC7A 100%);
       background-repeat: no-repeat;
       background-size: 100% 0.0em;
@@ -47,7 +47,7 @@ nav img{
 
 .user{
   margin-top: 0px;
-  font-family: Avenir Next;
+
   color: white;
   float: right;
   padding-top: 10px;
@@ -58,7 +58,7 @@ nav img{
 }
 .logout{
   margin-top: 0px;
-  font-family: Avenir Next;
+
   color: black;
   float: right;
   padding-top: 10px;
@@ -166,12 +166,12 @@ input {
   font-size: 17px;
 }
 
-button{
+.form-btn{
 
 width: 70%;
 color: white;
 padding: 10px 20px;
-margin: 8px 0;
+margin: 2px 0px;
 border: none;
 cursor: pointer;
 background: #5D97FF;
@@ -183,12 +183,13 @@ font-weight: 500;
 
 }
 
-button:hover{
+.form-btn:hover{
 background: #FFFFFF;
 color: #5D97FF;
 border: solid;
 border-width: 2px;
 box-shadow: none;
+margin: 0px;
 
 }
 
@@ -201,7 +202,7 @@ footer{
   width: 100%;
   align-items: center;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 100px;
 
 }
 
