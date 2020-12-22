@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Localisation</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Localisation Using UWB</title>
+    <meta
+    name="description"
+    content="Using Ultra-Wide Band to locate a Tag in a room.
+    This is for my final year project on University of Surrey.">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
-<script src="main.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-database.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 
   </head>
-  <body>
+  <body id = "body">
     <header>
       <!-- Navigation -->
       <div class="bar" id="bar">
@@ -19,7 +26,6 @@
         <p class="user" id="user">-</p>
         <img src="https://lymperatos.com/Website/Assets/usr.svg" alt="user">
       </div>
-
         <nav>
 
           <img src="https://lymperatos.com/Website/Assets/Logo.svg" alt="logo">
@@ -27,7 +33,7 @@
 
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#" class="sign-up" id="sbtn" >Sign up</a></li>
+            <li><a href="tutorial.html" class="tut" id="tut">Tutorial</a></li>
 
           </ul>
 
@@ -40,7 +46,6 @@
             <h1>Locate anything indoors with <span class="u1">10cm</span> accuracy using <span class="u2">Ultra-Wideband</span>.</h1>
             <img src="https://lymperatos.com/Website/Assets/Image.svg" alt="image">
           </div>
-
         <div class="right">
           <div class="login-form">
 
@@ -48,12 +53,88 @@
               <p class="error" id="error"></p>
               <input type="text" name="" value="" id="email" placeholder="Email">
               <input type="password" name="" value="" id="password" placeholder="Password">
-              <button type="button" name="sign-btn" onclick="signUp()">Signup</button>
-              <button type="button" name="login-btn" onclick="login()">Login</button>
+              <button type="button" name="sign-btn" class="form-btn" onclick="signUp()">Signup</button>
+              <button type="button" name="login-btn" class="form-btn" onclick="login()">Login</button>
 
           </div>
         </div>
       </div>
+
+      <!-- Dashboard -->
+      <div class="dashboard" id="dashboard">
+
+        <div class="tools">
+          <div class="logo-w">
+            <img src="https://lymperatos.com/Website/Assets/Logo-white.svg" alt="logo">
+          </div>
+          <ul>
+            <li> <button type="button" class="tools-btn" id="add-device"><img src="https://lymperatos.com/Website/Assets/add.svg" alt="icon" style="width:20px; padding-right:10px">Add Device</button></li>
+            <li><button type="button" class="tools-btn" id="remove-device"><img src="https://lymperatos.com/Website/Assets/minus.svg" alt="icon" style="width:20px; padding-right:10px">Remove Device</button></li>
+            <li><button type="button" class="tools-btn" id="edit-map"><img src="https://lymperatos.com/Website/Assets/edit-map.svg" alt="icon" style="width:20px; padding-right:10px">Edit Map</button></li>
+            <li><button type="button" class="tools-btn" id="settings"><img src="https://lymperatos.com/Website/Assets/settings.svg" alt="icon" style="width:20px; padding-right:10px">Settings</button></li>
+          </ul>
+        </div>
+
+        <div class="Anchors">
+              <ul id="anchors">
+                <!-- <li class="anchor-info">Anchor 1</li>
+                <li class="anchor-info">Anchor 2</li>
+                <li class="anchor-info">Anchor 3</li>
+                <li class="anchor-info">Anchor 4</li> -->
+              </ul>
+        </div>
+
+        <div class="devices">
+          <ul>
+              <li> <button type="button" class="devices-btn" id="function-area-btn">Calibrate</button></li>
+              <li> <button type="button" class="devices-btn" id="function-area-btn">Function Area</button></li>
+              <li> <button type="button" class="devices-btn" id="function-area-btn">Clear Map</button></li>
+          </ul>
+        </div>
+
+      <!-- Edit Map Popup -->
+        <div id="edit-map-popup" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="close_popup()">&times;</span>
+            <h1>Edit Map</h1>
+            <input type="text" name="" value="" placeholder="Width" id="map-width">
+            <input type="text" name="" value="" placeholder="Height" id="map-height">
+            <button type="button" name="button" onclick="saveMap()" class="form-btn">Save</button>
+          </div>
+        </div>
+        <!-- Remove Device Popup -->
+        <div id="remove-device-popup" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="close_popup()">&times;</span>
+            <h1>Remove Device</h1>
+            <input type="text" name="" value="" placeholder="Device ID to remove" id="map-width">
+            <button type="button" name="button" onclick="remove_device()" class="form-btn">Remove</button>
+          </div>
+        </div>
+        <!-- Add Device Popup -->
+        <div id="add-device-popup" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="close_popup()">&times;</span>
+            <h1>Add Device</h1>
+            <input type="text" name="" value="" placeholder="Device ID to add" id="add-device-id">
+            <button type="button" name="button" onclick="add_device()" class="form-btn">Add</button>
+          </div>
+        </div>
+        <!-- Settings Popup -->
+        <div id="settings-popup" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="close_popup()">&times;</span>
+            <h1>Settings</h1>
+            //TODO: add settings
+            <button type="button" name="button" onclick="saveSettings()" class="form-btn">Save</button>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
 
 
     </header>
@@ -61,10 +142,9 @@
     <footer>
 
 
-            <div class="footer-main">
+            <div class="footer-main" id="footer-main">
               <a href="https://github.com/lymperatos/Indoors-Localisation-UWB">
               <img src="https://lymperatos.com/Website/Assets/gh-logo.svg" alt="" style="margin-bottom: 15px; width: 40px;">
-
               <img src="https://lymperatos.com/Website/Assets/GitHub_Logo.svg" alt="" style="width:100px;">
               </a>
               <p>Copyright © 2020</p>
@@ -73,6 +153,9 @@
 
 
     </footer>
-
+    <link rel="stylesheet" href="https://lymperatos.com/Website/style.css">
+    <link rel="stylesheet" href="https://lymperatos.com/Website/dashboard-s.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+        <script src="https://lymperatos.com/Website/main.js"></script>
   </body>
 </html>
