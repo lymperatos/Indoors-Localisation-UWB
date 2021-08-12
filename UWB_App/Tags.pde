@@ -21,12 +21,17 @@ void track(){
    
    float x = (c*e - f*b)/(e*a - b*d);
    float y = (c*d - a*f)/(b*d - a*e);              
+   
+     fill(255);
+     textSize(18);
+     text("x: " + int(x),x+20, y-10);
+     text("y: " + int(y),x+20, y+10);
+     
    noStroke();
        fill(255);
       ellipse(x,y,5,5);
    noFill();
    stroke(tagColor);
-   
    tx = x;
    ty = y;
    //ellipse(x,y,10,10);

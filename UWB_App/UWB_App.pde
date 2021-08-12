@@ -85,7 +85,7 @@ float cy = 20;
 
 int filterValue = 15;
 
-boolean simulation = false;
+boolean simulation = true;
 float simd1 =0;
 float simd2 =0;
 float simd3 =0;
